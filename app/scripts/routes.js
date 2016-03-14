@@ -12,13 +12,24 @@ angular.module('tiymeetupApp')
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
       })
-
-      .when('/chat', {
-        templateUrl: 'views/chat.html',
-        controller: 'ChatCtrl'
+      .when('/members', {
+        templateUrl: 'views/members.html',
+        controller: 'MembersCtrl'
+      })
+      .when('/photos', {
+        templateUrl: 'views/photos.html',
+        controller: 'PhotosCtrl'
+      })
+      .when('/discussions', {
+        templateUrl: 'views/discussions.html',
+        controller: 'DiscussionsCtrl'
+      })
+      .when('/more', {
+        templateUrl: 'views/more.html',
+        controller: 'MoreCtrl'
       })
       .otherwise({redirectTo: '/'});
   }]);

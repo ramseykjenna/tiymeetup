@@ -1,88 +1,372 @@
-h1 {
-    color: red;
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+/* ---------- Variables ---------- */
+
+$background: #F3F3F3;
+$border: #DEDEDE;
+$bluewords: #67B7B7;
+$graywords: #878787;
+$font: 'Helvetica';
+$tiy-blue: #203138;
+$icon: #666666;
+
+/* ---------- Mixins ---------- */
+
+@mixin h-center($positioning:relative) {
+    position: $positioning;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+@mixin centerer($positioning:relative) {
+    position: $positioning;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 body {
-  padding: 0;
+    font-family: $font;
+    background-color: $background;
+    position: relative;
+    margin: 0;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.wrapper {
+    width: 100%;
+    @include h-center;
+    .header {
+        margin-top: 2em;
+        width: 100%;
+        height: 8em;
+        background-image: url(../images/header.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left center;
+        z-index: 999;
+    }
+    .navbar {
+        z-index: 998;
+        @include outer-container(100%);
+        height: 4em;
+        padding: 1em;
+        background-color: white;
+        box-shadow: 5px 0 15px $border;
+        border-radius: 5px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        .nav-col {
+            @include span-columns(2 of 10, block-collapse);
+            position: relative;
+            height: 100%;
+            .menu-item {
+                @include centerer;
+                position: relative;
+                border-radius: 5px;
+                height: 2.5em;
+                width: 80%;
+                a {
+                    color: $graywords;
+                    @include centerer(absolute);
+                    text-decoration: none;
+                    font-size: 1em;
+                    font-weight: normal;
+                }
+            }
+            .menu-item-active {
+                @extend .menu-item;
+                background-color: $tiy-blue;
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+    .container {
+        width: 100%;
+        margin-top: 2em;
+        .intro {
+            @include outer-container(100%);
+            background-color: white;
+            box-shadow: 0 0 10px $border;
+            border-radius: 5px;
+            height: 13em;
+            .intro-logo {
+                @include span-columns(4, block-collapse);
+                border-right: 1px solid $border;
+                height: 100%;
+                position: relative;
+                img {
+                    @include centerer;
+                }
+            }
+            .intro-about {
+                @include span-columns(4, block-collapse);
+                border-right: 1px solid $border;
+                height: 100%;
+                padding: 1.5em;
+                h1 {
+                    color: $bluewords;
+                    margin: 0;
+                    font-size: 1.2em;
+                }
+                h2 {
+                    color: $graywords;
+                    font-size: .75em;
+                    font-weight: normal;
+                    margin-bottom: 2em;
+                }
+                button {
+                    border: 0;
+                    border-radius: 5px;
+                    margin-top: .5em;
+                    width: 100%;
+                    background-color: $background;
+                    color: $bluewords;
+                    font-size: 1em;
+                    font-weight: normal;
+                    line-height: 2em;
+                }
+            }
+            .intro-links {
+                padding: 1em 1.5em;
+                @include span-columns(4, block-collapse);
+                .links {
+                    padding: .5em 0;
+                    line-height: .5em;
+                    border-bottom: 1.5px solid $border;
+                    a {
+                        line-height: 1.5em;
+                        text-decoration: none;
+                        color: $bluewords;
+                        font-size: 1em;
+                    }
+                }
+                .links-last {
+                    @extend .links;
+                    border-bottom: 0;
+                }
+            }
+        }
+        .welcome {
+            @include outer-container(100%);
+            background-color: white;
+            height: auto;
+            box-shadow: 0 0 10px $border;
+            border-radius: 5px;
+            margin-top: 2em;
+            .upcomingEvents {
+                width: 100%;
+                height: auto;
+                .upcomingEvent {
+                    padding: 2em 4em;
+                    border-bottom: 1px solid $border;
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    span {
+                        font-size: .75em;
+                        color: $graywords;
+                    }
+                    h1 {
+                        font-size: 1.5em;
+                        color: $bluewords;
+                    }
+                    img {}
+                    h2 {
+                        font-size: 1em;
+                        font-weight: normal;
+                        color: $graywords;
+                    }
+                    p {
+                        color: $graywords;
+                        margin-bottom: 0px;
+                        a {
+                            text-decoration: none;
+                            color: $bluewords;
+                        }
+                    }
+                    button {
+                        border: 0;
+                        border-radius: 5px;
+                        margin-top: .5em;
+                        width: 100%;
+                        max-width: 400px;
+                        background-color: $background;
+                        color: $graywords;
+                        font-size: 1.5em;
+                        font-weight: normal;
+                        line-height: 2em;
+                        @include h-center;
+                        box-shadow: 3px 3px 0px 0px darken($background, 25%);
+                    }
+                }
+            }
+        }
+        .whats-new {
+            @include outer-container(100%);
+            background-color: white;
+            height: auto;
+            box-shadow: 0 0 10px $border;
+            border-radius: 5px;
+            margin-top: 2em;
+            h1 {
+                font-size: 2em;
+                padding-top: .5em;
+                padding-left: 1em;
+                margin-bottom: 0;
+            }
+            .whats-new-item {
+                padding: 2em 1em;
+                border-bottom: 1px dotted $border;
+                width: 100%;
+                height: 8em;
+                position: relative;
+                .whats-new-icon {
+                    @include span-columns(1, block-collapse);
+                    height: 100%;
+                    i {
+                        font-size: 2em;
+                        color: $icon;
+                        float: right;
+                        margin-right: .5em;
+                    }
+                }
+                .whats-new-details {
+                    @include span-columns(9, block-collapse);
+                    height: 100%;
+                    h1 {
+                        font-size: 1em;
+                        font-weight: normal;
+                        color: $graywords;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    h2 {
+                        font-size: 1em;
+                        font-weight: normal;
+                        color: $graywords;
+                    }
+                    span {
+                        color: $graywords;
+                        .item-time {
+                            font-weight: lighter;
+                            color: $border;
+                        }
+                        a {
+                            text-decoration: none;
+                            color: $bluewords;
+                        }
+                    }
+                }
+                .whats-new-avatar {
+                    @include span-columns(2, block-collapse);
+                    height: 100%;
+                    img {
+                        height: 3em;
+                        width: auto;
+                        float: right;
+                        margin-right: 2em;
+                    }
+                }
+                button {
+                    border: 0;
+                    border-radius: 5px;
+                    margin-top: .5em;
+                    width: 100%;
+                    max-width: 400px;
+                    background-color: $background;
+                    color: $graywords;
+                    font-size: 1.5em;
+                    font-weight: normal;
+                    line-height: 2em;
+                    @include h-center;
+                    box-shadow: 3px 3px 0px 0px darken($background, 25%);
+                }
+            }
+        }
+        .empty-page {
+            width: 100%;
+            height: 40em;
+            position: relative;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 15px $border;
+            h1 {
+                color: $graywords;
+                @include h-center(absolute);
+            }
+        }
+    }
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+.footer-one {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    h1 {
+        text-align: center;
+        padding-top: 1.5em;
+    }
+    button {
+        border: 0;
+        border-radius: 5px;
+        margin-top: .5em;
+        width: 100%;
+        max-width: 400px;
+        background-color: #DE393F;
+        color: white;
+        font-size: 1.5em;
+        font-weight: normal;
+        line-height: 2em;
+        @include h-center;
+        box-shadow: 3px 3px 0px 0px darken($background, 25%);
+        margin-bottom: 1em;
+    }
+    .footer-bottom {
+        @include outer-container(100%);
+        margin-top: 2em;
+
+        .left-footer-bottom {
+            @include span-columns(8, block-collapse);
+            height: 100%;
+            padding: 0em 5em;
+            p {
+                color: $graywords;
+                font-size: 1.5em;
+                margin-top: 0;
+            }
+
+
+        }
+        .right-footer-bottom {
+            @include span-columns(4, block-collapse);
+            height: 100%;
+            img {
+                border-radius: 50%;
+                height: 7em;
+                width: auto;
+                float: right;
+                margin-right: 5em;
+            }
+
+
+        }
+
+
+    }
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
 
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-      
-  }
+    .wrapper {
+        max-width: 967px;
+    }
+}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+@media screen and (min-width: 468px) {
+    .wrapper {
+        width: 95%;
+    }
 }

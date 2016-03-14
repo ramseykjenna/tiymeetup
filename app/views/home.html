@@ -1,0 +1,74 @@
+<div class="intro">
+    <div class="intro-logo">
+
+        <img src="http://photos1.meetupstatic.com/photos/event/8/6/8/8/global_435394440.jpeg" alt="">
+    </div>
+    <div class="intro-about">
+        <h1>Austin, TX</h1>
+        <h2>Founded March 19, 2015</h2>
+        <button>About Us</button>
+        <button>Invite Friends</button>
+    </div>
+    <div class="intro-links">
+        <div ng-class="{'links':!$last,'links-last':$last}" ng-repeat="link in introLinks"><a href="#">{{link}}</a></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="welcome">
+    <div class="upcomingEvents">
+        <div class="upcomingEvent" ng-repeat="event in upcomingEvents">
+            <span>{{event.date}}</span>
+            <h1>{{event.title}}</h1>
+            <img ng-src="{{event.avatarPath}}" alt="">
+            <h2>{{event.memberCount}} Member</h2>
+            <p>{{event.details}}<a href="#"> LEARN MORE</a></p>
+            <button class="more-meetups" ng-if="$last">More Meetups</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="whats-new">
+   <h1>What's new</h1>
+    <div class="whats-new-item" ng-repeat="item in whatsNewItems">
+        <div class="whats-new-icon" ng-if="!$last">
+            <i class="{{item.icon}}"></i>
+        </div>
+        <div class="whats-new-details" ng-if="!$last">
+            <h1>{{item.title}}</h1>
+           <span><a href="#"> {{item.name}}</a> {{item.action}}<a href='#'> {{item.event}}</a> <div class="item-time">{{item.time}}</div></span>
+        </div>
+        <div class="whats-new-avatar" ng-if="!$last">
+            <img ng-src="{{item.image}}" alt="">
+        </div>
+
+
+        <button class="more-meetups" ng-if="$last">More</button>
+    </div>
+
+</div>
+
+
+
+<!--
+
+<span><a href="">Name</a><h2>action</h2><a href="">event</a></span><h2>time</h2>
+
+-->
+
+
+
+
+

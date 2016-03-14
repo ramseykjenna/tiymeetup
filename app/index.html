@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -13,54 +14,66 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="tiymeetupApp">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+
+<body ng-app="tiymeetupApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <!--
     <div class="header" ng-cloak="">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
 
-            <a class="navbar-brand" href="#/">tiymeetup</a>
-          </div>
+    </div>
+-->
+    <div class="wrapper" ng-controller="HomeCtrl">
+        <div class="header"></div>
+        <div class="navbar" role="navigation">
+            <div class="nav-col" ng-repeat="menuItem in menuItems">
+                <div ng-class="{'menu-item':menuItem.route !== currentRoute,'menu-item-active':menuItem.route === currentRoute}"><a ng-href="{{menuItem.route}}">{{menuItem.title}}</a></div>
+            </div>
 
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <!-- //angularfire -->
-              <li><a ng-href="#/chat">chat</a></li>
-
-            </ul>
-          </div>
         </div>
-      </div>
+        <div class="container">
+            <div ng-view=""></div>
+        </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
+    <div class="footer-one">
+
+        <h1>Imagine having a community behind you</h1>
+        <button>Get Started</button>
+        <div class="footer-bottom">
+           <div class="left-footer-bottom">
+               <p>We just grab a coffee and speak French. Some people have been coming every week for months...it creates a kind of warmth to the group.</p>
+        <p> - Rafael, started French Conversation Group</p>
+
+           </div>
+           <div class="right-footer-bottom">
+               <img src="http://img2.meetupstatic.com/img/64563690732310708299361/microTemplate/bottombar/testimonials/rafael.jpg">
+           </div>
+        </div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team and Firebase</p>
-      </div>
-    </div>
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+        ! function (A, n, g, u, l, a, r) {
+            A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+                    (A[l].q = A[l].q || []).push(arguments)
+                }, A[l].l = +new Date, a = n.createElement(g),
+                r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+        }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -77,14 +90,30 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/angularfire/config.js"></script>
-        <script src="scripts/angularfire/firebase.ref.js"></script>
-        <script src="scripts/controllers/chat.js"></script>
-        <script src="scripts/filters/reverse.js"></script>
-        <script src="scripts/routes.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/home.js"></script>
+    <script src="scripts/angularfire/config.js"></script>
+    <script src="scripts/angularfire/firebase.ref.js"></script>
+    <script src="scripts/filters/reverse.js"></script>
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/controllers/members.js"></script>
+    <script src="scripts/controllers/photos.js"></script>
+    <script src="scripts/controllers/discussions.js"></script>
+    <script src="scripts/controllers/more.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>
+
+
+
+
+<!-- SHit -->
+<!--
+        <div class="container">
+          <div class="navbar-header">
+
+            <a class="navbar-brand" href="#/">tiymeetup</a>
+          </div>
+-->
